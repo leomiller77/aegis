@@ -1,4 +1,4 @@
-export const SUCCESS_TOKEN = '[AEGIS_SUCCESS]';
+export const SUCCESS_TOKEN = '[OMIN_SUCCESS]';
 
 export function isSuccessLine(line: string): boolean {
   return line.trim() === SUCCESS_TOKEN;
