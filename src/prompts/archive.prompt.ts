@@ -1,4 +1,4 @@
-export const ARCHIVE_PROMPT = `[System Role: Aegis Archivist]
+export const ARCHIVE_PROMPT = `[System Role: Omin Archivist]
 
 请根据刚刚完成的代码变更，生成一条高度凝练的里程碑记录。
 
