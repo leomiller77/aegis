@@ -5,7 +5,6 @@ import { atomicWrite, safeReadJson, fileExists, resolveProjectRoot } from './fs-
 export const ConfigSchema = z.object({
   host: z.enum(['claude-code', 'codex-cli']),
   maxRetries: z.number().int().positive().default(5),
-  testCommand: z.string().default('npm test'),
   specsDir: z.string().default('.omin/specs'),
   taskFile: z.string().default('.omin/task.md'),
   stateFile: z.string().default('.omin/state.json'),
