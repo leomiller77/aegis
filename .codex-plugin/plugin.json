@@ -1,0 +1,39 @@
+{
+  "name": "omin",
+  "version": "1.0.0",
+  "description": "AI workflow harness — spec-driven autonomous coding loop with multi-agent dispatch and self-healing test iteration.",
+  "author": {
+    "name": "Leo Miller",
+    "url": "https://github.com/leomiller77"
+  },
+  "homepage": "https://github.com/leomiller77/aegis",
+  "repository": "https://github.com/leomiller77/aegis",
+  "license": "MIT",
+  "keywords": [
+    "workflow",
+    "agents",
+    "spec-driven",
+    "tdd",
+    "autonomous",
+    "self-healing",
+    "multi-agent"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Omin",
+    "shortDescription": "Spec-driven autonomous coding loop with self-healing test iteration",
+    "longDescription": "Omin enforces a spec-driven workflow: define architecture specs once, then run /omin <task> to enter a fully autonomous coding loop. The AI writes code, runs tests, self-heals on failure, and dispatches multiple sub-agents for complex tasks. Integrates with Claude Code and Codex CLI.",
+    "developerName": "Leo Miller",
+    "category": "Coding",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use /omin spec to define architecture constraints before writing code.",
+      "Use /omin <task> to start a self-healing coding loop."
+    ],
+    "brandColor": "#6366F1"
+  }
+}
