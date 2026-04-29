@@ -1,13 +1,13 @@
 {
-  "name": "aegis",
+  "name": "omin",
   "version": "1.0.0",
   "description": "AI workflow harness — spec-driven autonomous coding loop",
-  "namespace": "aegis",
+  "namespace": "omin",
   "commands": [
     {
       "name": "spec",
-      "trigger": "/aegis:spec",
-      "description": "Generate or update anti-corruption layer specs in .aegis/specs/",
+      "trigger": "/omin:spec",
+      "description": "Generate or update anti-corruption layer specs in .omin/specs/",
       "parameters": {
         "input": {
           "type": "string",
@@ -18,12 +18,12 @@
       "systemPrompt": {
         "file": "prompts/spec.txt"
       },
-      "allowedPaths": [".aegis/specs/**"],
+      "allowedPaths": [".omin/specs/**"],
       "deniedPaths": ["src/**", "lib/**", "app/**"]
     },
     {
       "name": "run",
-      "trigger": "/aegis",
+      "trigger": "/omin",
       "description": "Ignite autonomous coding loop for a single atomic task",
       "parameters": {
         "input": {
@@ -37,7 +37,7 @@
       },
       "hooks": {
         "onOutputMatch": {
-          "pattern": "^\\[AEGIS_SUCCESS\\]$",
+          "pattern": "^\\[OMIN_SUCCESS\\]$",
           "script": "hook.js"
         }
       },
@@ -45,17 +45,17 @@
     },
     {
       "name": "clear",
-      "trigger": "/aegis:clear",
+      "trigger": "/omin:clear",
       "description": "Force-interrupt the active task loop and reset to idle",
       "parameters": {},
       "script": "scripts/clear.js"
     },
     {
       "name": "status",
-      "trigger": "/aegis:status",
+      "trigger": "/omin:status",
       "description": "Display system health snapshot",
       "parameters": {},
-      "internalCommand": "aegis _internal-status",
+      "internalCommand": "omin _internal-status",
       "script": "scripts/status.js"
     }
   ],
