@@ -62,7 +62,7 @@ program
 
     const scaffoldSpinner = spinner('正在生成工作区目录...');
     const scaffoldResult = scaffoldWorkspace(projectRoot);
-    scaffoldSpinner.succeed(chalk.green('工作区已就绪 → ') + log.path('.aegis/'));
+    scaffoldSpinner.succeed(chalk.green('工作区已就绪 → ') + log.path('.omin/'));
 
     for (const f of scaffoldResult.created) {
       log.info('  创建 ' + log.path(f));
@@ -71,7 +71,7 @@ program
       console.log(chalk.gray('  · 跳过（已存在）' + f));
     }
 
-    writeConfig({ host, maxRetries: maxRetries ?? 5, testCommand: testCommand || 'npm test', specsDir: '.aegis/specs', taskFile: '.aegis/task.md', stateFile: '.aegis/state.json' }, projectRoot);
+    writeConfig({ host, maxRetries: maxRetries ?? 5, testCommand: testCommand || 'npm test', specsDir: '.omin/specs', taskFile: '.omin/task.md', stateFile: '.omin/state.json' }, projectRoot);
     log.success('omin.config.json 已生成');
     console.log();
 
@@ -114,9 +114,9 @@ program
 
 function runInternalStatus(): void {
   const projectRoot = resolveProjectRoot();
-  const aegisDir = path.join(projectRoot, '.aegis');
+  const ominDir = path.join(projectRoot, '.omin');
 
-  if (!fileExists(aegisDir)) {
+  if (!fileExists(ominDir)) {
     log.error('工作区未初始化，请先执行 omin init。');
     process.exit(1);
   }
@@ -144,9 +144,9 @@ function runInternalStatus(): void {
 
 async function runInternalTeardown(interruptMode: boolean): Promise<void> {
   const projectRoot = resolveProjectRoot();
-  const aegisDir = path.join(projectRoot, '.aegis');
+  const ominDir = path.join(projectRoot, '.omin');
 
-  if (!fileExists(aegisDir)) {
+  if (!fileExists(ominDir)) {
     log.error('工作区未初始化，请先执行 omin init。');
     process.exit(1);
   }
@@ -188,7 +188,7 @@ async function runInternalTeardown(interruptMode: boolean): Promise<void> {
 
     console.log();
     log.success('任务已中断，系统归于 Idle 状态。');
-    log.info('  已清空 .aegis/task.md');
+    log.info('  已清空 .omin/task.md');
     log.info('  任务草稿已暂存至 state.json → stash_queue（不计入 milestones）');
   } else {
     const archiveSpinner = spinner('正在写入里程碑记录...');
