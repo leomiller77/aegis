@@ -18,7 +18,7 @@ export function spinner(text: string): Ora {
 
 export function printBanner(subtitle: string): void {
   console.log(chalk.bold('┌─────────────────────────────────────────┐'));
-  console.log(chalk.bold('│  Aegis Engine v1.0.0                    │'));
+  console.log(chalk.bold('│  Omin v1.0.0                            │'));
   console.log(chalk.bold(`│  ${subtitle.padEnd(38)}│`));
   console.log(chalk.bold('└─────────────────────────────────────────┘'));
   console.log();
