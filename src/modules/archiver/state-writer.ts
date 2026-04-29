@@ -18,7 +18,7 @@ export interface StashEntry {
 
 export interface StateJson {
   $schema: string;
-  aegis_version: string;
+  omin_version: string;
   milestones: Milestone[];
   stash_queue: StashEntry[];
 }
@@ -34,7 +34,7 @@ export function appendMilestone(
   milestone: Milestone,
 ): void {
   const statePath = path.join(projectRoot, config.stateFile);
-  const lockPath = path.join(projectRoot, '.aegis', 'state.lock');
+  const lockPath = path.join(projectRoot, '.omin', 'state.lock');
 
   const acquired = acquireLock(lockPath, 5000);
   if (!acquired) {
@@ -57,7 +57,7 @@ export function appendStash(
   entry: StashEntry,
 ): void {
   const statePath = path.join(projectRoot, config.stateFile);
-  const lockPath = path.join(projectRoot, '.aegis', 'state.lock');
+  const lockPath = path.join(projectRoot, '.omin', 'state.lock');
 
   const acquired = acquireLock(lockPath, 5000);
   if (!acquired) {
@@ -77,7 +77,7 @@ export function appendStash(
 function defaultState(): StateJson {
   return {
     $schema: 'http://json-schema.org/draft-07/schema#',
-    aegis_version: '1.0.0',
+    omin_version: '1.0.0',
     milestones: [],
     stash_queue: [],
   };
