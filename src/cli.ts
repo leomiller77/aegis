@@ -15,20 +15,20 @@ import { generateMilestone } from './modules/archiver/summarizer.js';
 const program = new Command();
 
 program
-  .name('aegis')
+  .name('omin')
   .description('AI workflow harness for Codex CLI and Claude Code')
   .version('1.0.0');
 
 program
   .command('init')
-  .description('初始化 Aegis 工作区，注入宿主配置')
+  .description('初始化 Omin 工作区，注入宿主配置')
   .option('--force', '强制覆盖已存在的配置文件')
   .action(async (options: { force: boolean }) => {
     const projectRoot = resolveProjectRoot();
-    printBanner('AI Workflow Harness — aegis init');
+    printBanner('AI Workflow Harness — omin init');
 
     const host = await select<'claude-code' | 'codex-cli'>({
-      message: '请选择当前 Aegis 需挂载的宿主 AI 引擎：',
+      message: '请选择当前 Omin 需挂载的宿主 AI 引擎：',
       choices: [
         { name: 'Claude Code', value: 'claude-code' },
         { name: 'Codex CLI', value: 'codex-cli' },
@@ -72,17 +72,17 @@ program
     }
 
     writeConfig({ host, maxRetries: maxRetries ?? 5, testCommand: testCommand || 'npm test', specsDir: '.aegis/specs', taskFile: '.aegis/task.md', stateFile: '.aegis/state.json' }, projectRoot);
-    log.success('aegis.config.json 已生成');
+    log.success('omin.config.json 已生成');
     console.log();
 
     const hostLabel = getHostLabel(host);
     const nextStep1 = host === 'claude-code'
-      ? '  /aegis:spec <需求文档路径>  设置规范'
-      : '  /aegis:spec <需求文档路径>  设置规范';
-    const nextStep2 = '  /aegis <需求描述>           启动闭环';
+      ? '  /omin:spec <需求文档路径>  设置规范'
+      : '  /omin:spec <需求文档路径>  设置规范';
+    const nextStep2 = '  /omin <需求描述>           启动闭环';
 
     printBox([
-      '✅ Aegis 初始化完成',
+      '✅ Omin 初始化完成',
       '',
       `  下一步：在 ${hostLabel} 中输入`,
       nextStep1,
@@ -92,7 +92,7 @@ program
 
 program
   .command('status')
-  .description('显示 Aegis 系统状态快照（同 _internal-status）')
+  .description('显示 Omin 系统状态快照（同 _internal-status）')
   .action(() => {
     runInternalStatus();
   });
@@ -117,13 +117,13 @@ function runInternalStatus(): void {
   const aegisDir = path.join(projectRoot, '.aegis');
 
   if (!fileExists(aegisDir)) {
-    log.error('工作区未初始化，请先执行 aegis init。');
+    log.error('工作区未初始化，请先执行 omin init。');
     process.exit(1);
   }
 
   const config = readConfig(projectRoot);
   if (!config) {
-    log.error('无法读取 aegis.config.json，请先执行 aegis init。');
+    log.error('无法读取 omin.config.json，请先执行 omin init。');
     process.exit(1);
   }
 
@@ -135,7 +135,7 @@ function runInternalStatus(): void {
 
   const specsDir = path.join(projectRoot, config.specsDir);
   if (!fileExists(specsDir)) {
-    log.warn('尚未生成任何规范文件。建议先执行 /aegis:spec 定义架构约束。');
+    log.warn('尚未生成任何规范文件。建议先执行 /omin:spec 定义架构约束。');
   }
 
   const output = renderStatus(config, projectRoot);
@@ -147,7 +147,7 @@ async function runInternalTeardown(interruptMode: boolean): Promise<void> {
   const aegisDir = path.join(projectRoot, '.aegis');
 
   if (!fileExists(aegisDir)) {
-    log.error('工作区未初始化，请先执行 aegis init。');
+    log.error('工作区未初始化，请先执行 omin init。');
     process.exit(1);
   }
 
@@ -160,7 +160,7 @@ async function runInternalTeardown(interruptMode: boolean): Promise<void> {
   })();
 
   if (!config) {
-    log.error('无法读取 aegis.config.json，请先执行 aegis init。');
+    log.error('无法读取 omin.config.json，请先执行 omin init。');
     process.exit(1);
   }
 
