@@ -36,7 +36,7 @@ function formatDate(d: Date): string {
 
 export function renderStatus(config: AegisConfig, projectRoot: string): string {
   const lines: string[] = [];
-  const top = chalk.bold('┌' + '─'.repeat(23) + ' Aegis Status ' + '─'.repeat(BOX_WIDTH - 39) + '┐');
+  const top = chalk.bold('┌' + '─'.repeat(24) + ' Omin Status ' + '─'.repeat(BOX_WIDTH - 39) + '┐');
   const bottom = chalk.bold('└' + '─'.repeat(BOX_WIDTH - 2) + '┘');
 
   lines.push(top);
