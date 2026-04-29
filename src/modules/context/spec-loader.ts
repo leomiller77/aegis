@@ -39,9 +39,9 @@ export function buildSystemPayload(specs: SpecFile[], taskContent: string): stri
   const parts: string[] = [];
 
   for (const spec of specs) {
-    parts.push(`=== AEGIS SPEC: ${spec.name} ===\n${spec.content}`);
+    parts.push(`=== OMIN SPEC: ${spec.name} ===\n${spec.content}`);
   }
 
-  parts.push(`=== AEGIS TASK ===\n${taskContent}`);
+  parts.push(`=== OMIN TASK ===\n${taskContent}`);
   return parts.join('\n\n');
 }
